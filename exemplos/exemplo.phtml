@@ -1,0 +1,41 @@
+<function name='soma' return='int'>
+    <params>
+        <param type='int'>a</param>
+        <param type='int'>b</param>
+    </params>
+    <return>a + b</return>
+</function>
+
+<function name='main' return='int'>
+    <var type='int'>resultado</var>
+    <var type='string'>mensagem</var>
+
+    <assign var='mensagem'>"O resultado da soma eh: "</assign>
+    <assign var='resultado'>
+        <call name='soma'>
+            <args>
+                <arg>5</arg>
+                <arg>3</arg>
+            </args>
+        </call>
+    </assign>
+
+    <print>mensagem + resultado</print>
+
+    <var type='int'>contador</var>
+    <assign var='contador'>0</assign>
+
+    <while cond='contador < 5'>
+        <print>"Contador: " + contador</print>
+        <assign var='contador'>contador + 1</assign>
+    </while>
+
+    <if cond='resultado > 7'>
+        <print>"Resultado maior que 7"</print>
+    </if>
+    <else>
+        <print>"Resultado menor ou igual a 7"</print>
+    </else>
+
+    <return>0</return>
+</function>

@@ -1,0 +1,97 @@
+<code> ::= <function_list>?
+
+<function_list> ::= <function_declaration> <function_list>?
+
+<function_declaration> ::= "<function name='" <identifier> "' return='" <type> "'>" <parameter_list>? <command_list>? "</function>"
+
+<parameter_list> ::= "<params>" <parameters>? "</params>"
+
+<parameters> ::= <parameter> <parameters>?
+
+<parameter> ::= "<param type='" <type> "'>" <identifier> "</param>"
+
+<command_list> ::= <command> <command_list>?
+
+<command> ::= <variable_declaration>
+            | <assignment>
+            | <if_structure>
+            | <while_structure>
+            | <function_call>
+            | "<return>" <expression> "</return>"
+            | "<print>" <expression> "</print>"
+
+<variable_declaration> ::= "<var type='" <type> "'>" <identifier> "</var>"
+
+<assignment> ::= "<assign var='" <identifier> "'>" <expression> "</assign>"
+
+<if_structure> ::= "<if cond='" <expression> "'>" <command_list>? "</if>" <else_optional>?
+<else_optional> ::= "<else>" <command_list>? "</else>"
+
+<while_structure> ::= "<while cond='" <expression> "'>" <command_list>? "</while>"
+
+<function_call> ::= "<call name='" <identifier> "'>" <args_block>? "</call>"
+
+<args_block> ::= "<args>" <arg_list> "</args>"
+<arg_list> ::= <arg> <arg_list>?
+<arg> ::= "<arg>" <expression> "</arg>"
+
+<expression> ::= <logical_or>
+
+<logical_or> ::= <logical_and> <logical_or_cont>?
+<logical_or_cont> ::= "||" <logical_and> <logical_or_cont>?
+
+<logical_and> ::= <equality> <logical_and_cont>?
+<logical_and_cont> ::= "&&" <equality> <logical_and_cont>?
+
+<equality> ::= <relational> <equality_cont>?
+<equality_cont> ::= "==" <relational> <equality_cont>?
+                  | "!=" <relational> <equality_cont>? 
+
+<relational> ::= <sum> <relational_cont>?
+<relational_cont> ::= "<" <sum> <relational_cont>?
+                    | ">" <sum> <relational_cont>?
+                    | "<=" <sum> <relational_cont>?
+                    | ">=" <sum> <relational_cont>?
+
+<sum> ::= <product> <sum_cont>?
+<sum_cont> ::= "+" <product> <sum_cont>?
+             | "_" <product> <sum_cont>?
+
+
+<product> ::= <unary> <product_cont>?
+<product_cont> ::= "*" <unary> <product_cont>?
+                 | "/" <unary> <product_cont>?
+
+<unary> ::= "_" <unary>?
+          | "!" <unary>?
+          | <primary>
+
+<primary> ::= <number>
+            | <character>
+            | <boolean>
+            | <string>
+            | <identifier>
+            | "(" <expression> ")"
+            | <function_call>
+
+<type> ::= <primitive_type>
+<primitive_type> ::= "int" | "float" | "char" | "bool" | "string" | "void"
+
+<string> ::= "\"" <string_content> "\""
+<string_content> ::= <string_char> <string_content>?
+<string_char> ::= <letter> | " " | ","
+
+<identifier> ::= <letter> <identifier_rest>
+<identifier_rest> ::= <letter_digit_underscore> <identifier_rest>?
+<letter_digit_underscore> ::= any character except double quote and newline
+
+<number> ::= <digit> <number_rest>? <fractional_part_optional>?
+<number_rest> ::= <digit> <number_rest>?
+<fractional_part_optional> ::= "." <digit> <number_rest>?
+
+<character> ::= "'" <letter> "'"
+
+<boolean> ::= "true" | "false"
+
+<letter> ::= [a-z] | [A-Z]
+<digit> ::= [0-9]

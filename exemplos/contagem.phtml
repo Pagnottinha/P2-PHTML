@@ -1,0 +1,14 @@
+<function name='main' return='int'>
+  <var type='int'>i</var>
+  <assign var='i'>0</assign>
+  <var type='int'>limit</var>
+  <assign var='limit'>5</assign>
+
+  <if cond='limit > 0'>
+    <while cond='i <= limit'>
+      <print>i</print>
+      <assign var='i'>i + 1</assign>
+    </while>
+  </if>
+  <return>0</return>
+</function>

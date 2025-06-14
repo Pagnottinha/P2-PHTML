@@ -1,0 +1,18 @@
+<function name='greet' return='string'>
+  <params>
+    <param type='string'>name</param>
+  </params>
+  <return>"Hello, " + name</return>
+</function>
+
+<function name='main' return='void'>
+  <var type='string'>msg</var>
+  <assign var='msg'>
+    <call name='greet'>
+      <args>
+        <arg>"John"</arg>
+      </args>
+    </call>
+  </assign>
+  <print>msg</print>
+</function>

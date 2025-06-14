@@ -1,0 +1,220 @@
+<function name='soma' return='int'>
+  <params>
+    <param type='int'>a</param>
+    <param type='int'>b</param>
+  </params>
+  <return>a + b</return>
+</function>
+
+<function name='subtracao' return='int'>
+  <params>
+    <param type='int'>a</param>
+    <param type='int'>b</param>
+  </params>
+  <return>a - b</return>
+</function>
+
+<function name='multiplicacao' return='int'>
+  <params>
+    <param type='int'>a</param>
+    <param type='int'>b</param>
+  </params>
+  <return>a * b</return>
+</function>
+
+<function name='divisao' return='float'>
+  <params>
+    <param type='float'>a</param>
+    <param type='float'>b</param>
+  </params>
+  <var type='float'>resultado</var>
+  <if cond='b != 0.0'>
+    <assign var='resultado'>a / b</assign>
+  </if>
+  <else>
+    <print>"Erro: divisao por zero"</print>
+    <assign var='resultado'>0</assign>
+  </else>
+  <return>resultado</return>
+</function>
+
+<function name='maior' return='bool'>
+  <params>
+    <param type='int'>a</param>
+    <param type='int'>b</param>
+  </params>
+  <return>a > b</return>
+</function>
+
+<function name='igual' return='bool'>
+  <params>
+    <param type='int'>a</param>
+    <param type='int'>b</param>
+  </params>
+  <return>a == b</return>
+</function>
+
+<function name='saudacao' return='string'>
+  <params>
+    <param type='string'>nome</param>
+  </params>
+  <return>"Ola, " + nome + "!"</return>
+</function>
+
+<function name='fatorial' return='int'>
+  <params>
+    <param type='int'>n</param>
+  </params>
+  <var type='int'>resultado</var>
+  <assign var='resultado'>1</assign>
+  
+  <if cond='n <= 0'>
+    <return>1</return>
+  </if>
+  <else>
+    <var type='int'>i</var>
+    <assign var='i'>1</assign>
+    <while cond='i <= n'>
+      <assign var='resultado'>resultado * i</assign>
+      <assign var='i'>i + 1</assign>
+    </while>
+  </else>
+  
+  <return>resultado</return>
+</function>
+
+<function name='contarAte' return='void'>
+  <params>
+    <param type='int'>limite</param>
+  </params>
+  <var type='int'>i</var>
+  <assign var='i'>1</assign>
+  
+  <while cond='i <= limite'>
+    <print>i</print>
+    <assign var='i'>i + 1</assign>
+  </while>
+</function>
+
+<function name='verificarPar' return='bool'>
+  <params>
+    <param type='int'>numero</param>
+  </params>
+  <var type='int'>resto</var>
+  <assign var='resto'>numero - ((numero / 2) * 2)</assign>
+  <return>resto == 0</return>
+</function>
+
+<function name='concatenarStrings' return='string'>
+  <params>
+    <param type='string'>str1</param>
+    <param type='string'>str2</param>
+    <param type='string'>separador</param>
+  </params>
+  <return>str1 + separador + str2</return>
+</function>
+
+<function name='operacoesLogicas' return='void'>
+  <var type='bool'>a</var>
+  <var type='bool'>b</var>
+  <assign var='a'>true</assign>
+  <assign var='b'>false</assign>
+  
+
+  <print>"a: " + a</print>
+  <print>"b: " + b</print>
+  <print>"AND: "</print>
+  <print>a && b</print>
+  
+  <print>"OR: "</print>
+  <print>a || b</print>
+  
+  <print>"NOT a: "</print>
+  <print>!a</print>
+</function>
+
+<function name='demonstrarTipos' return='void'>
+  <var type='int'>inteiro</var>
+  <var type='float'>decimal</var>
+  <var type='char'>caractere</var>
+  <var type='bool'>booleano</var>
+  <var type='string'>texto</var>
+  
+  <assign var='inteiro'>42</assign>
+  <assign var='decimal'>3.14159</assign>
+  <assign var='caractere'>'A'</assign>
+  <assign var='booleano'>true</assign>
+  <assign var='texto'>"Isso eh uma string"</assign>
+  
+  <print>"Inteiro: " + inteiro</print>
+  <print>"Decimal: " + decimal</print>
+  <print>"Caractere: " + caractere</print>
+  <print>"Booleano: " + booleano</print>
+  <print>texto</print>
+</function>
+
+<function name='operacoesRelacionais' return='void'>
+  <var type='int'>a</var>
+  <var type='int'>b</var>
+  <assign var='a'>5</assign>
+  <assign var='b'>10</assign>
+
+  <print>"a:" + a</print>
+  <print>"a:" + b</print>
+  
+  <print>"a < b: " + (a < b)</print>
+  <print>"a > b: " + (a > b)</print>
+  <print>"a <= b: " + (a <= b)</print>
+  <print>"a >= b: " + (a >= b)</print>
+  <print>"a == b: " + (a == b)</print>
+  <print>"a != b: " + (a != b)</print>
+</function>
+
+<function name='main' return='void'>
+  <print>"====== DEMONSTRACAO DA LINGUAGEM PHTML ======"</print>
+  
+  <print>"--- Operacoes Aritmeticas ---"</print>
+  <var type='int'>a</var>
+  <var type='int'>b</var>
+  <assign var='a'>10</assign>
+  <assign var='b'>5</assign>
+  
+  <print>"a = " + a + ", b = " + b</print>
+  <print>"Soma: " + <call name='soma'><args><arg>a</arg><arg>b</arg></args></call></print>
+  <print>"Subtracao: " + <call name='subtracao'><args><arg>a</arg><arg>b</arg></args></call></print>
+  <print>"Multiplicacao: " + <call name='multiplicacao'><args><arg>a</arg><arg>b</arg></args></call></print>
+  
+  <var type='float'>x</var>
+  <var type='float'>y</var>
+  <assign var='x'>10.0</assign>
+  <assign var='y'>3.0</assign>
+  <print>"x = " + x + ", y = " + y</print>
+  <print>"Divisao: " + <call name='divisao'><args><arg>x</arg><arg>y</arg></args></call></print>
+  <print>"Divisao por zero: " + <call name='divisao'><args><arg>x</arg><arg>0.0</arg></args></call></print>
+  
+  <print>"--- Operações Logicas ---"</print>
+  <call name='operacoesLogicas'></call>
+  
+  <print>"--- Operações Relacionais ---"</print>
+  <call name='operacoesRelacionais'></call>
+  
+  <print>"--- Demonstracao de Tipos ---"</print>
+  <call name='demonstrarTipos'></call>
+  
+  <print>"--- Funcoes com String ---"</print>
+  <print><call name='saudacao'><args><arg>"Mundo"</arg></args></call></print>
+  
+  <print><call name='concatenarStrings'><args>
+    <arg>"Primeira parte"</arg>
+    <arg>"Segunda parte"</arg>
+    <arg>" - "</arg>
+  </args></call></print>
+  
+  <print>"--- Iteracao ---"</print>
+  <print>"Fatorial de 5: " + <call name='fatorial'><args><arg>5</arg></args></call></print>
+  
+  <print>"--- Contagem ---"</print>
+  <call name='contarAte'><args><arg>5</arg></args></call>
+  
+  
+</function>
